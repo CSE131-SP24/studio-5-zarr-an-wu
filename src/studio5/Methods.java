@@ -14,8 +14,10 @@ public class Methods {
 	 * @return the Euclidean distance between (x1,y1) and (x2,y2)
 	 */
 	public static double distanceBetween(double x1, double y1, double x2, double y2) {
-		double distance = 0;
 		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
+		double xdistance = (x2-x1)*(x2-x1);
+		double ydistance = (y2-y1)*(y2-y1);
+		double distance = Math.sqrt(xdistance+ydistance);
 		
 		return distance;
 	}
@@ -28,23 +30,29 @@ public class Methods {
 	 * @param radius the radius of the bull's eye
 	 */
 	public static void drawBullsEye(double x, double y, double radius) {
+		
 		StdDraw.setPenColor(StdDraw.BLACK);
 		StdDraw.filledCircle(x, y, radius);
-
 		// TODO: Draw the remaining rings of the bull's eye
 		// Blue ring with 3.0/4.0 the radius
 		// suggested rgb values: 0, 109, 219
-
+		double radius2 = radius*0.75;
+		StdDraw.setPenColor(0,109,219);
+		StdDraw.filledCircle(x, y, radius2);
 		
 
 		// Red ring with 1.0/2.0 the radius
 		// suggested rgb values: 146, 0, 0
-
+		double radius3 = radius*0.5;
+		StdDraw.setPenColor(146,0,0);
+		StdDraw.filledCircle(x, y, radius3);
 		
 
 		// Yellow ring with 1.0/4.0 the radius
 		// suggested rgb values: 255, 255, 109
-
+		double radius4 = radius*0.25;
+		StdDraw.setPenColor(255,255,109);
+		StdDraw.filledCircle(x, y, radius4);
 		
 	}
 
@@ -62,8 +70,23 @@ public class Methods {
 	public static String substituteAll(String source, char target, String replacement) {
 		String result = "";
 		// TODO: Finish this method
+		char[] array = source.toCharArray();
+		for(int i = 0; i < source.length(); i++)
+		{
+			if (array[i]==target) {
+				result=result+replacement;
+			}
+			else {
+				result = array[i];
+			}
+		}
 		
 		return result;
+	}
+
+	private static char[] toCharArray(int length) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
